@@ -60,6 +60,17 @@ params:
         > This header should be the same name as the `auth_server_url` expects. If the header names need
         > to differ, consider using the [Request Transformer plugin](/hub/kong-inc/request-transformer/) to
         > rename the headers.
+    - name: auth_cache_ttl
+      required: no
+      datatype: number
+      default: 60
+      value_in_examples: 60
+      description: |
+        Cache expiration time, in seconds.
+
+        > This plugin will cache `auth_server_url` responses (success or failure) for each authentication token,
+        > `auth_server_url`, and `auth_cache_ttl`. If, while configuring, you need to override the cache value,
+        > try changing the `auth_cache_ttl` by `1`.
     - name: upstream_header_claims
       required: semi
       datatype: array of string elements
